@@ -1,2 +1,2 @@
 # Concessionario
-Java's Project representing a veichle dealer
+Java's Project representing a vehicle dealer.
