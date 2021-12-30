@@ -1,9 +1,9 @@
-package Concessionario.src.it.dstech.daoentities;
+package Concessionario.it.dstech.daoentities;
 
 import java.util.ArrayList;
 
-import Concessionario.src.it.dstech.ConcessionarioInterface;
-import Concessionario.src.it.dstech.exception.EccezioneVeicoloEsistente;
+import Concessionario.it.dstech.ConcessionarioInterface;
+import Concessionario.it.dstech.exception.EccezioneVeicoloEsistente;
 
 public class Concessionario implements ConcessionarioInterface {
 	private ArrayList<Veicolo> veicoli;

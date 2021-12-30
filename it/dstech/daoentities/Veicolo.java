@@ -1,4 +1,4 @@
-package Concessionario.src.it.dstech.daoentities;
+package Concessionario.it.dstech.daoentities;
 
 public abstract class Veicolo {
 	private String marca;
