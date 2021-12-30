@@ -1,6 +1,11 @@
-package concessionario_GRUPPO3;
+package it.dstech;
 
 import java.util.ArrayList;
+
+import it.dstech.daoentities.MacchinaAgricola;
+import it.dstech.daoentities.Persona;
+import it.dstech.daoentities.Veicolo;
+import it.dstech.exception.EccezioneVeicoloEsistente;
 
 public interface ConcessionarioInterface {
 	

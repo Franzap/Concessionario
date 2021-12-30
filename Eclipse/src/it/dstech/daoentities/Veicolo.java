@@ -1,4 +1,4 @@
-package concessionario_GRUPPO3;
+package it.dstech.daoentities;
 
 public abstract class Veicolo {
 	private String marca;

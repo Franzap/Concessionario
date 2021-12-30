@@ -1,6 +1,13 @@
-package concessionario_GRUPPO3;
+package it.dstech;
 
 import java.util.ArrayList;
+
+import it.dstech.daoapp.Test;
+import it.dstech.daoentities.Automobile;
+import it.dstech.daoentities.Concessionario;
+import it.dstech.daoentities.MacchinaAgricola;
+import it.dstech.daoentities.Persona;
+import it.dstech.daoentities.Veicolo;
 
 
 public class Main {

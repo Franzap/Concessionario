@@ -1,4 +1,6 @@
-package concessionario_GRUPPO3;
+package it.dstech.exception;
+
+import it.dstech.daoentities.Veicolo;
 
 @SuppressWarnings("serial")
 public class EccezioneVeicoloEsistente extends Exception{
