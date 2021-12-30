@@ -1,13 +1,13 @@
-package it.dstech;
+package  Concessionario.src.it.dstech;
 
 import java.util.ArrayList;
 
-import it.dstech.daoapp.Test;
-import it.dstech.daoentities.Automobile;
-import it.dstech.daoentities.Concessionario;
-import it.dstech.daoentities.MacchinaAgricola;
-import it.dstech.daoentities.Persona;
-import it.dstech.daoentities.Veicolo;
+import  Concessionario.src.it.dstech.daoapp.Test;
+import  Concessionario.src.it.dstech.daoentities.Automobile;
+import  Concessionario.src.it.dstech.daoentities.Concessionario;
+import  Concessionario.src.it.dstech.daoentities.MacchinaAgricola;
+import  Concessionario.src.it.dstech.daoentities.Persona;
+import  Concessionario.src.it.dstech.daoentities.Veicolo;
 
 
 public class Main {

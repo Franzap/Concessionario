@@ -1,11 +1,11 @@
-package Concessionario.Eclipse.src.it.dstech;
+package Concessionario.src.it.dstech;
 
 import java.util.ArrayList;
 
-import it.dstech.daoentities.MacchinaAgricola;
-import it.dstech.daoentities.Persona;
-import it.dstech.daoentities.Veicolo;
-import it.dstech.exception.EccezioneVeicoloEsistente;
+import  Concessionario.src.it.dstech.daoentities.MacchinaAgricola;
+import  Concessionario.src.it.dstech.daoentities.Persona;
+import  Concessionario.src.it.dstech.daoentities.Veicolo;
+import  Concessionario.src.it.dstech.exception.EccezioneVeicoloEsistente;
 
 public interface ConcessionarioInterface {
 	
