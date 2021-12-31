@@ -14,7 +14,6 @@ public class Test {
 	public static void menu(Concessionario c){
 		
 			Scanner scan= new Scanner(System.in);
-		
 			System.out.println("Questa è la lista delle azioni che puoi richiedere:");
 			System.out.println("1) Lista Veicoli");
 			System.out.println("2) Dettagli Veicolo");

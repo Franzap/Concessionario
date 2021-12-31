@@ -1,6 +1,8 @@
 package Concessionario.entita;
 
-public abstract class Veicolo {
+import Concessionario.interfacce.VeicoloI;
+
+public abstract class Veicolo implements VeicoloI {
 	private String marca;
 	private String modello;
 	private String targa;
@@ -75,7 +77,8 @@ public abstract class Veicolo {
 	public void setCosto(double costo) {
 		this.costo = costo;
 	}
-
+	
+	@Override
 	public void stampaVeicoloSemplificato() {
 		
 		String nome=this.getClass().getName();
@@ -91,7 +94,8 @@ public abstract class Veicolo {
 		return false;
 		
 	}
-
+	
+	@Override
 	public void stampaDettagliVeicolo() {
 		String nome=this.getClass().getName();
 		System.out.println("Tipo Veicolo: "+ nome.split("\\.")[nome.split("\\.").length-1]);

@@ -1,6 +1,8 @@
 package Concessionario.entita;
 
-public class Persona {
+import Concessionario.interfacce.PersonaI;
+
+public class Persona implements PersonaI{
 	private String nome;
 	private String cognome;
 	private int eta;
@@ -49,11 +51,11 @@ public class Persona {
 	public void setEta(int eta) {
 		this.eta = eta;
 	}
-	public void stampaProprietario() {
-		System.out.println(this.getNome());
-		System.out.println(this.getCognome());
-		System.out.println(this.eta);
-		
+	@Override
+	public void stampaIdentita() {
+		System.out.println("Nome: "+this.getNome());
+		System.out.println("Cognome: "+this.getCognome());
+		System.out.println("Età: "+this.eta);
 	}
 	
 }

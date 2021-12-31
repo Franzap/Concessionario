@@ -7,7 +7,7 @@ import Concessionario.entita.MacchinaAgricola;
 import Concessionario.entita.Persona;
 import Concessionario.entita.Veicolo;
 
-public interface ConcessionarioInterface {
+public interface ConcessionarioI {
 	
 	public double valore(); // restituisce il valore totale di tutti i veicoli presenti 
 	public Veicolo menoPotente();// restituisce il veicolo con la cilindrata più piccola

@@ -3,9 +3,9 @@ package Concessionario.entita;
 import java.util.ArrayList;
 
 import Concessionario.eccezioni.EccezioneVeicoloEsistente;
-import Concessionario.interfacce.ConcessionarioInterface;
+import Concessionario.interfacce.ConcessionarioI;
 
-public class Concessionario implements ConcessionarioInterface {
+public class Concessionario implements ConcessionarioI {
 	private ArrayList<Veicolo> veicoli;
 	
 	public Concessionario(ArrayList<Veicolo> veicoli) {
