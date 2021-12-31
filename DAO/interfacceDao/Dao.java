@@ -1,4 +1,4 @@
-package Concessionario.DAO;
+package Concessionario.DAO.interfacceDao;
 
 import java.util.ArrayList;
 

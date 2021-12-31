@@ -3,8 +3,8 @@ package Concessionario.app;
 import java.util.List;
 import java.util.Scanner;
 
-import Concessionario.DAO.Dao;
-import Concessionario.DAO.VeicoloHtDao;
+import Concessionario.DAO.implementazioniDao.VeicoloHtDao;
+import Concessionario.DAO.interfacceDao.Dao;
 import Concessionario.entita.Veicolo;
 
 public class InterfacciaDao {
