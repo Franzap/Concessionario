@@ -5,11 +5,12 @@ import java.util.Hashtable;
 
 import Concessionario.DAO.interfacceDao.Dao;
 import Concessionario.entita.Veicolo;
-
+@SuppressWarnings("unused")
 public class VeicoloHtDao implements  Dao<Veicolo>{
    
 	private static Hashtable<Long,Veicolo> db= new Hashtable<>();
 	private static Long ID=1L;
+	
 	@Override
 	public Veicolo get(long l) {
 		// TODO Auto-generated method stub
@@ -35,7 +36,6 @@ public class VeicoloHtDao implements  Dao<Veicolo>{
 		// TODO Auto-generated method stub
 		
 	}
-
 
 	
 }
