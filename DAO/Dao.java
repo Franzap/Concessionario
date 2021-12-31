@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public interface Dao <T>{
 	
-	public T get(int id);
+	public T get(long l);
 	public ArrayList<T> findAll();
 	public void save(T t);
 	public void update(T t);
-	public void delete(int id);
+	public void delete(long l);
 
 }

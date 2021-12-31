@@ -1,11 +1,11 @@
 package Concessionario.app;
 
-import it.dstech.daoapp.dao.Dao;
-import it.dstech.daoapp.dao.VeicoloHtDao;
-import it.dstech.daoapp.entities.Veicolo;
-
 import java.util.List;
 import java.util.Scanner;
+
+import Concessionario.DAO.Dao;
+import Concessionario.DAO.VeicoloHtDao;
+import Concessionario.entita.Veicolo;
 
 public class InterfacciaDao {
     Scanner scanner;
@@ -59,7 +59,10 @@ public class InterfacciaDao {
     }
 
     private void addVeicolo() {
-        Veicolo v = new Veicolo();
+       
+    	/**
+    	
+    	Veicolo v = new Veicolo();
         System.out.println("inserisci la marca:");
         scanner.nextLine();
         v.setMarca(scanner.nextLine());
@@ -67,12 +70,14 @@ public class InterfacciaDao {
         v.setCilindrata(scanner.nextInt());
         this.dao.save(v);
         this.mainMenu();
+    	
+    	*/
     }
 
     private void lista() {
         List<Veicolo> l = this.dao.findAll();
         for (Veicolo v: l) {
-            System.out.println("id:"+v.getId()+" dettagli:"+v.toString());
+            System.out.println("id:"+Veicolo.getID()+" dettagli:"+v.toString());
         }
         this.mainMenu();
     }
