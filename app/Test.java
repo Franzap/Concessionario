@@ -1,13 +1,13 @@
-package Concessionario.it.dstech.daoapp;
+package Concessionario.app;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import  Concessionario.it.dstech.daoentities.Automobile;
-import  Concessionario.it.dstech.daoentities.Concessionario;
-import  Concessionario.it.dstech.daoentities.MacchinaAgricola;
-import  Concessionario.it.dstech.daoentities.Persona;
-import  Concessionario.it.dstech.exception.EccezioneVeicoloEsistente;
+import Concessionario.eccezioni.EccezioneVeicoloEsistente;
+import Concessionario.entita.Automobile;
+import Concessionario.entita.Concessionario;
+import Concessionario.entita.MacchinaAgricola;
+import Concessionario.entita.Persona;
 
 public class Test {
 	

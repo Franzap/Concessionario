@@ -1,6 +1,6 @@
-package Concessionario.it.dstech.exception;
+package Concessionario.eccezioni;
 
-import Concessionario.it.dstech.daoentities.Veicolo;
+import Concessionario.entita.Veicolo;
 
 @SuppressWarnings("serial")
 public class EccezioneVeicoloEsistente extends Exception{

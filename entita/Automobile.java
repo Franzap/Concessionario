@@ -1,4 +1,4 @@
-package Concessionario.it.dstech.daoentities;
+package Concessionario.entita;
 
 public class Automobile extends Veicolo{
 	
