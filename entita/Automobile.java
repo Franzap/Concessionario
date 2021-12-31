@@ -1,6 +1,9 @@
-package Concessionario.src.it.dstech.daoentities;
+package Concessionario.entita;
 
-public class Automobile extends Veicolo{
+import Concessionario.interfacce.AutomobileI;
+import Concessionario.interfacce.VeicoloI;
+
+public class Automobile extends Veicolo implements VeicoloI, AutomobileI{
 	
 	private Persona proprietario;
 	
@@ -9,6 +12,7 @@ public class Automobile extends Veicolo{
 		super(marca, modello, targa, cilindrata, costo);
 		this.proprietario=proprietario;
 	}
+	
 	/**
 	 * @return the proprietario
 	 */
@@ -27,8 +31,13 @@ public class Automobile extends Veicolo{
 	@Override
 	public void stampaDettagliVeicolo() {
 		super.stampaDettagliVeicolo();
-		
-		this.getProprietario().stampaProprietario();
+		this.stampaProprietario();
+	}
+	
+	@Override
+	public void stampaProprietario() {
+		// TODO Auto-generated method stub
+		this.proprietario.stampaIdentita();
 	}
 	
 }

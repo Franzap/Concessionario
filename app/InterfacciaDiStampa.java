@@ -1,20 +1,18 @@
-package Concessionario.src.it.dstech.daoapp;
+package Concessionario.app;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import  Concessionario.src.it.dstech.daoentities.Automobile;
-import  Concessionario.src.it.dstech.daoentities.Concessionario;
-import  Concessionario.src.it.dstech.daoentities.MacchinaAgricola;
-import  Concessionario.src.it.dstech.daoentities.Persona;
-import  Concessionario.src.it.dstech.exception.EccezioneVeicoloEsistente;
+import Concessionario.eccezioni.EccezioneVeicoloEsistente;
+import Concessionario.entita.Automobile;
+import Concessionario.entita.Concessionario;
+import Concessionario.entita.MacchinaAgricola;
+import Concessionario.entita.Persona;
 
-public class Test {
+public class InterfacciaDiStampa {
 	
 	public static void menu(Concessionario c){
-		
 			Scanner scan= new Scanner(System.in);
-		
 			System.out.println("Questa è la lista delle azioni che puoi richiedere:");
 			System.out.println("1) Lista Veicoli");
 			System.out.println("2) Dettagli Veicolo");
@@ -69,7 +67,7 @@ public class Test {
 			
 			}
 			
-			Test.menu(c);	
+			InterfacciaDiStampa.menu(c);	
 	}
 
 	
@@ -117,19 +115,19 @@ public class Test {
 			System.out.println("RIPROVA:");
 			System.out.println();
 			scan.nextLine();
-			Test.comandoCancellaVeicolo(c, scan);
+			InterfacciaDiStampa.comandoCancellaVeicolo(c, scan);
 		
 		}catch(IndexOutOfBoundsException e) {
 			System.out.println();
 			System.out.println(("IL NUMERO DI VEICOLO NON è GIUSTO!!").toUpperCase());
 			System.out.println("RIPROVA:");
 			System.out.println();
-			Test.comandoCancellaVeicolo(c, scan);
+			InterfacciaDiStampa.comandoCancellaVeicolo(c, scan);
 		}
 		
 		System.out.println( );
 		
-		if(Test.ripetereComando(scan,"Sicuro di voler eliminare il veicolo "+ numeroVeicolo +"? Scrivi 1 per \"SI\" E 2 per \" no\" " )) {
+		if(InterfacciaDiStampa.ripetereComando(scan,"Sicuro di voler eliminare il veicolo "+ numeroVeicolo +"? Scrivi 1 per \"SI\" E 2 per \" no\" " )) {
 				
 			System.out.println("Ho eliminato correttamente il veicolo!!");
 			c.eliminaVeicolo(numeroVeicolo);				
@@ -156,14 +154,14 @@ public class Test {
 			System.out.println("RIPROVA:");
 			System.out.println();
 			scan.nextLine();
-			Test.comandoModificaVeicolo(c, scan);
+			InterfacciaDiStampa.comandoModificaVeicolo(c, scan);
 		
 		}catch(IndexOutOfBoundsException e) {
 			System.out.println();
 			System.out.println(("IL NUMERO DI VEICOLO NON è GIUSTO!!").toUpperCase());
 			System.out.println("RIPROVA:");
 			System.out.println();
-			Test.comandoModificaVeicolo(c, scan);
+			InterfacciaDiStampa.comandoModificaVeicolo(c, scan);
 		}
 		
 			System.out.print("Inserire il nome della caratteristica da modificare:");
@@ -186,8 +184,8 @@ public class Test {
 			c.modificaVeicolo(numeroVeicolo,caratteristica, valore, valoreIntero);
 			
 			
-			if(Test.ripetereComando(scan,"Vuoi ripetere l'operazione? 1: Ripetere 0: Uscire")) {
-				Test.comandoModificaVeicolo(c, scan);
+			if(InterfacciaDiStampa.ripetereComando(scan,"Vuoi ripetere l'operazione? 1: Ripetere 0: Uscire")) {
+				InterfacciaDiStampa.comandoModificaVeicolo(c, scan);
 			}
 	
 		
@@ -200,7 +198,7 @@ public class Test {
 		double costo=0;
 		String marca="", modello="", targa="";
 		try {
-			scelta=Test.ripetereComando(scan, "Inserisci 0 per aggiungere un Automobile o inserisci 1 per aggiungere una Macchina Agricola");
+			scelta=InterfacciaDiStampa.ripetereComando(scan, "Inserisci 0 per aggiungere un Automobile o inserisci 1 per aggiungere una Macchina Agricola");
 			scan.nextLine();
 			System.out.println("Inserisci la marca dil Veicolo");
 			marca = scan.next();
@@ -220,10 +218,9 @@ public class Test {
 		} catch (InputMismatchException e) {
 			System.out.println("Hai sbagliato ad inserire il valore");
 			scan.nextLine();
-			Test.comandoAggiungiVeicolo(c,scan);
+			InterfacciaDiStampa.comandoAggiungiVeicolo(c,scan);
 		}	
-		
-		
+			
 			try {
 				
 				 if(scelta) {
@@ -251,11 +248,11 @@ public class Test {
 			} catch (EccezioneVeicoloEsistente e) {
 				System.out.println(e.getMessage());
 				System.out.println("Aggiungi di nuovo il veicolo");
-				Test.comandoAggiungiVeicolo(c, scan);
+				InterfacciaDiStampa.comandoAggiungiVeicolo(c, scan);
 			} 
-			if(Test.ripetereComando(scan,"Vuoi ripetere l'operazione? 1: Ripetere 0: Uscire")){
+			if(InterfacciaDiStampa.ripetereComando(scan,"Vuoi ripetere l'operazione? 1: Ripetere 0: Uscire")){
 				
-				Test.comandoAggiungiVeicolo(c, scan);
+				InterfacciaDiStampa.comandoAggiungiVeicolo(c, scan);
 			}
 	}
 	private static void Tasto_Continua(Scanner scan) {
@@ -277,12 +274,12 @@ public class Test {
 				//questa dovrebbe essere un'eccezione ma la gestiamo con un if
 				System.out.println("Hai sbagliato input, RIPROVA!!");
 				scan.nextLine();
-				Test.ripetereComando(scan,msg);
+				InterfacciaDiStampa.ripetereComando(scan,msg);
 			}
 		} catch (InputMismatchException e) {
 			System.out.println("Hai sbagliato input, RIPROVA!!");
 			scan.nextLine();
-			Test.ripetereComando(scan,msg);
+			InterfacciaDiStampa.ripetereComando(scan,msg);
 		}
 
 		return flag;

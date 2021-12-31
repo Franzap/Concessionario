@@ -1,6 +1,9 @@
-package Concessionario.src.it.dstech.daoentities;
+package Concessionario.entita;
 
-public class MacchinaAgricola extends Veicolo{
+import Concessionario.interfacce.MacchinaAgricolaI;
+import Concessionario.interfacce.VeicoloI;
+
+public class MacchinaAgricola extends Veicolo implements VeicoloI, MacchinaAgricolaI{
 	
 	private int tonnellate;
 	
@@ -15,6 +18,7 @@ public class MacchinaAgricola extends Veicolo{
 	public int getTonnellate() {
 		return tonnellate;
 	}
+	
 	/**
 	 * @param tonnellate the tonnellate to set
 	 */
@@ -26,6 +30,11 @@ public class MacchinaAgricola extends Veicolo{
 	@Override
 	public void stampaDettagliVeicolo() {
 		super.stampaDettagliVeicolo();
+		this.stampaTonnellate();
+	}
+	
+	@Override
+	public void stampaTonnellate() {
 		System.out.println("Tonnellate: "+ this.getTonnellate() + "t");
 	}
 }

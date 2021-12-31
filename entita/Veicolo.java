@@ -1,6 +1,9 @@
-package Concessionario.src.it.dstech.daoentities;
+package Concessionario.entita;
 
-public abstract class Veicolo {
+import Concessionario.interfacce.VeicoloI;
+
+public abstract class Veicolo implements VeicoloI {
+	private static long ID=0;
 	private String marca;
 	private String modello;
 	private String targa;
@@ -8,6 +11,7 @@ public abstract class Veicolo {
 	private double costo;
 	
 	public Veicolo(String marca, String modello, String targa, int cilindrata, double costo) {
+		ID=getID() + 1;
 		this.marca=marca;
 		this.modello=modello;
 		this.targa=targa;
@@ -75,7 +79,8 @@ public abstract class Veicolo {
 	public void setCosto(double costo) {
 		this.costo = costo;
 	}
-
+	
+	@Override
 	public void stampaVeicoloSemplificato() {
 		
 		String nome=this.getClass().getName();
@@ -91,7 +96,8 @@ public abstract class Veicolo {
 		return false;
 		
 	}
-
+	
+	@Override
 	public void stampaDettagliVeicolo() {
 		String nome=this.getClass().getName();
 		System.out.println("Tipo Veicolo: "+ nome.split("\\.")[nome.split("\\.").length-1]);
@@ -107,5 +113,9 @@ public abstract class Veicolo {
 		return "Veicolo [marca=" + marca + ", modello=" + modello + ", targa=" + targa + ", cilindrata=" + cilindrata
 				+ ", costo=" + costo + "]";
 	}
-	
+
+	public static long getID() {
+		return ID;
+	}
+
 }

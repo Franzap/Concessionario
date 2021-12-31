@@ -1,13 +1,13 @@
-package Concessionario.src.it.dstech;
+package Concessionario.interfacce;
 
 import java.util.ArrayList;
 
-import  Concessionario.src.it.dstech.daoentities.MacchinaAgricola;
-import  Concessionario.src.it.dstech.daoentities.Persona;
-import  Concessionario.src.it.dstech.daoentities.Veicolo;
-import  Concessionario.src.it.dstech.exception.EccezioneVeicoloEsistente;
+import Concessionario.eccezioni.EccezioneVeicoloEsistente;
+import Concessionario.entita.MacchinaAgricola;
+import Concessionario.entita.Persona;
+import Concessionario.entita.Veicolo;
 
-public interface ConcessionarioInterface {
+public interface ConcessionarioI {
 	
 	public double valore(); // restituisce il valore totale di tutti i veicoli presenti 
 	public Veicolo menoPotente();// restituisce il veicolo con la cilindrata più piccola

@@ -1,13 +1,13 @@
-package  Concessionario.src.it.dstech;
+package  Concessionario.app;
 
 import java.util.ArrayList;
 
-import  Concessionario.src.it.dstech.daoapp.Test;
-import  Concessionario.src.it.dstech.daoentities.Automobile;
-import  Concessionario.src.it.dstech.daoentities.Concessionario;
-import  Concessionario.src.it.dstech.daoentities.MacchinaAgricola;
-import  Concessionario.src.it.dstech.daoentities.Persona;
-import  Concessionario.src.it.dstech.daoentities.Veicolo;
+import Concessionario.entita.Automobile;
+import Concessionario.entita.Concessionario;
+import Concessionario.entita.MacchinaAgricola;
+import Concessionario.entita.Persona;
+import Concessionario.entita.Veicolo;
+
 
 
 public class Main {
@@ -33,10 +33,7 @@ public class Main {
 		veicoli.add(m3);
 		Concessionario c = new Concessionario(veicoli);
 		
-		Test.menu(c);
-		
-		
-	
+		InterfacciaDiStampa.menu(c);
 	}
 
 }
