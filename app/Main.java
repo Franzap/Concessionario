@@ -33,10 +33,7 @@ public class Main {
 		veicoli.add(m3);
 		Concessionario c = new Concessionario(veicoli);
 		
-		Test.menu(c);
-		
-		
-	
+		InterfacciaDiStampa.menu(c);
 	}
 
 }
