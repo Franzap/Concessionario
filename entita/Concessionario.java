@@ -1,7 +1,6 @@
 package Concessionario.entita;
 
 import java.util.ArrayList;
-
 import Concessionario.eccezioni.EccezioneVeicoloEsistente;
 import Concessionario.interfacce.ConcessionarioI;
 
