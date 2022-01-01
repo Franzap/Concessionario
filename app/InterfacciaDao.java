@@ -3,17 +3,17 @@ package Concessionario.app;
 import java.util.List;
 import java.util.Scanner;
 
-import Concessionario.DAO.implementazioniDao.VeicoloHtDao;
-import Concessionario.DAO.interfacceDao.Dao;
+import Concessionario.DAO.implementazioniDao.VeicoloDao;
+import Concessionario.DAO.interfacceDao.DaoCrudInterfaces;
 import Concessionario.entita.Veicolo;
 
 public class InterfacciaDao {
     Scanner scanner;
-    Dao<Veicolo> dao;
+    DaoCrudInterfaces<Veicolo> dao;
 
     public InterfacciaDao() {
         this.scanner=new Scanner(System.in);
-        this.dao= new VeicoloHtDao();
+        this.dao= new VeicoloDao();
     }
 
     void mainMenu() {

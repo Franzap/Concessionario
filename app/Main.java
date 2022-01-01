@@ -2,6 +2,8 @@ package  Concessionario.app;
 
 import java.util.ArrayList;
 
+import Concessionario.DAO.implementazioniDao.VeicoloDao;
+import Concessionario.DAO.interfacceDao.DaoCrudInterfaces;
 import Concessionario.entita.Automobile;
 import Concessionario.entita.Concessionario;
 import Concessionario.entita.MacchinaAgricola;
@@ -14,7 +16,7 @@ public class Main {
 	
 	
 	public static void main(String[] args)  {
-		Persona p1 = new Persona("Mario", "Rossi", 35);
+		/*Persona p1 = new Persona("Mario", "Rossi", 35);
 		Automobile a1 = new Automobile("Audi", "A3", "sdhjhgsd", 2000,25000, p1);
 		Persona p2 = new Persona("Maria", "Bianchi", 45);
 		Automobile a2 = new Automobile("BMW", "M3", "3456dfgsd", 4000,50000, p2);
@@ -33,7 +35,10 @@ public class Main {
 		veicoli.add(m3);
 		Concessionario c = new Concessionario(veicoli);
 		
-		InterfacciaDiStampa.menu(c);
+		Esercitazione2.menu(c);
+	*/	
+		DaoCrudInterfaces<Veicolo> dao= new VeicoloDao(); 
+		Esercitazione2 es= new Esercitazione2(dao);
 	}
 
 }

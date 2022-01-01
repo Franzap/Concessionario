@@ -2,7 +2,7 @@ package Concessionario.DAO.interfacceDao;
 
 import java.util.ArrayList;
 
-public interface Dao <T>{
+public interface DaoCrudInterfaces <T>{
 	
 	public T get(long l);
 	public ArrayList<T> findAll();

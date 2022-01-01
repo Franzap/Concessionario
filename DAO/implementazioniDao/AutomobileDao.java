@@ -1,31 +1,32 @@
 package Concessionario.DAO.implementazioniDao;
 
 import java.util.ArrayList;
-import Concessionario.DAO.interfacceDao.Dao;
-import Concessionario.entita.MacchinaAgricola;
 
-public class MacchinaAgricolaHtDao implements Dao<MacchinaAgricola> {
+import Concessionario.DAO.interfacceDao.DaoCrudInterfaces;
+import Concessionario.entita.Automobile;
+
+public class AutomobileDao implements DaoCrudInterfaces<Automobile>{
 
 	@Override
-	public MacchinaAgricola get(long l) {
+	public Automobile get(long l) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<MacchinaAgricola> findAll() {
+	public ArrayList<Automobile> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void save(MacchinaAgricola t) {
+	public void save(Automobile t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update(MacchinaAgricola t) {
+	public void update(Automobile t) {
 		// TODO Auto-generated method stub
 		
 	}
