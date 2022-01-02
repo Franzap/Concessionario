@@ -80,7 +80,7 @@ public class Esercitazione2 <T> {
 			Esercitazione2.menu(c);	
 	}
 
-	
+	// CAMBIARE I COMANDI IN MODO CHE CHIAMINO I METODI DEL DAO AL POSTO DEI METODI DELLE CLASSI
 
 	private static void comandoListaVeicoli(Concessionario c) {
 		System.out.println();

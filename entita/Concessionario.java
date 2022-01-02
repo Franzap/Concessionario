@@ -152,7 +152,6 @@ public class Concessionario implements ConcessionarioI {
 			v.stampaVeicoloSemplificato();
 			System.out.println();
 		}
-		
 	}
 	@Override
 	public void stampaDettaglio(int numeroVeicolo) {
