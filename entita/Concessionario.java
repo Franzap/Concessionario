@@ -1,7 +1,6 @@
 package Concessionario.entita;
 
 import java.util.ArrayList;
-
 import Concessionario.eccezioni.EccezioneVeicoloEsistente;
 import Concessionario.interfacce.ConcessionarioI;
 
@@ -153,7 +152,6 @@ public class Concessionario implements ConcessionarioI {
 			v.stampaVeicoloSemplificato();
 			System.out.println();
 		}
-		
 	}
 	@Override
 	public void stampaDettaglio(int numeroVeicolo) {
