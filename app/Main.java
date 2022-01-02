@@ -39,6 +39,7 @@ public class Main {
 	*/	
 		DaoCrudInterfaces<Veicolo> dao= new VeicoloDao(); 
 		Esercitazione2 es= new Esercitazione2(dao);
+		es.menu();
 	}
 
 }

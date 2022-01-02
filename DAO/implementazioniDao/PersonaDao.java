@@ -2,6 +2,8 @@ package Concessionario.DAO.implementazioniDao;
 
 import Concessionario.entita.Persona;
 import Concessionario.DAO.interfacceDao.DaoCrudInterfaces;
+import Concessionario.eccezioni.EccezioneVeicoloEsistente;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -20,17 +22,16 @@ public class PersonaDao implements DaoCrudInterfaces<Persona>{
 	}
 
 	@Override
-	public ArrayList<Persona> findAll() {
+	public void findAll() {
 		ArrayList<Persona> contatti= new ArrayList<Persona>();
 		contatti.addAll(PersonaDao.table.values());
 		/*for(Long id : PersonaDao.table.keySet()) {
 			contatti.add(PersonaDao.table.get(id));
 		}*/
-		return contatti;
 	}
 
 	@Override
-	public void save(Persona p) {
+	public void save(Persona p) throws EccezioneVeicoloEsistente {
 		if (p==null) { 
 			System.out.println("Stai cercando di aggiungere il nulla");
 			return;
@@ -44,17 +45,10 @@ public class PersonaDao implements DaoCrudInterfaces<Persona>{
 	}
 
 	@Override
-	public void update(long id, Persona p) {
-		if (p==null) { 
-			System.out.println("La modifica non può avvenire senza modifiche!!");
-			return;
-		}
-		if (PersonaDao.table.contains(p)){
-			System.out.println("La modifica non può essere fatta");
-			return;
-		}
-		System.out.println("Modifica avvenuta!");
-		PersonaDao.table.put(id, p);
+	public void update(long id, String caratteristica, String stringa, double valore) {
+		
+		
+		
 	}
 
 	@Override

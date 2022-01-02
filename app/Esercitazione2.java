@@ -1,5 +1,6 @@
 package Concessionario.app;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ import Concessionario.entita.Automobile;
 import Concessionario.entita.Concessionario;
 import Concessionario.entita.MacchinaAgricola;
 import Concessionario.entita.Persona;
+import Concessionario.entita.Veicolo;
 import Concessionario.DAO.interfacceDao.*;
 
 @SuppressWarnings("unused")
@@ -21,7 +23,7 @@ public class Esercitazione2 <T> {
 		this.dao = dao;
 	}
 
-	public static void menu(Concessionario c){
+	public void menu(){
 			Scanner scan= new Scanner(System.in);
 			System.out.println("Questa è la lista delle azioni che puoi richiedere:");
 			System.out.println("1) Lista Veicoli");
@@ -37,24 +39,24 @@ public class Esercitazione2 <T> {
 				scan.nextLine();
 				switch(choice) {
 				case 1:
-					comandoListaVeicoli(c);
+					comandoListaVeicoli();
 					break;
 			
 				case 2:
-					c.stampaVeicoliNumerati();
-					comandoDettagliVeicolo(c,scan);
+					this.dao.findAll();
+					comandoDettagliVeicolo(scan);
 					break;
 			
 				case 3:
-					comandoCancellaVeicolo(c,scan);
+					comandoCancellaVeicolo(scan);
 					break;
 			
 				case 4:
-					comandoModificaVeicolo(c,scan);
+					comandoModificaVeicolo(scan);
 					break;
 				
 				case 5:
-					comandoAggiungiVeicolo(c,scan);
+					comandoAggiungiVeicolo(scan);
 					break;
 				
 				case 6:
@@ -77,26 +79,28 @@ public class Esercitazione2 <T> {
 			
 			}
 			
-			Esercitazione2.menu(c);	
+			menu();	
 	}
 
 	// CAMBIARE I COMANDI IN MODO CHE CHIAMINO I METODI DEL DAO AL POSTO DEI METODI DELLE CLASSI
 
-	private static void comandoListaVeicoli(Concessionario c) {
+	private void comandoListaVeicoli() {
 		System.out.println();
 		System.out.println("Lista veicoli del concessionario:");	
 		System.out.println();
-		c.stampaVeicoli();
-	
+		//System.out.println(this.dao.findAll());
+		int count=0;
+		this.dao.findAll();
 	}
 	
-	private static void comandoDettagliVeicolo(Concessionario c, Scanner scan) {	
+	private void comandoDettagliVeicolo(Scanner scan) {
 			int Indice_Veicolo;
 			try {
+				comandoListaVeicoli();
 				System.out.print("\n\nInserisci l' indice del veicolo da cercare   ");
 				Indice_Veicolo=scan.nextInt();
 				scan.nextLine();
-				c.stampaDettaglio(Indice_Veicolo);
+				((Veicolo)this.dao.get(Indice_Veicolo)).stampaDettagliVeicolo();
 				
 			}catch(InputMismatchException |IndexOutOfBoundsException e) {
 				System.out.println("\n Veicolo non trovato! \n\n");
@@ -104,9 +108,9 @@ public class Esercitazione2 <T> {
 				Tasto_Continua(scan);	
 	}
 	
-	private static void comandoCancellaVeicolo(Concessionario c, Scanner scan) {
+	private void comandoCancellaVeicolo(Scanner scan) {
 		
-		c.stampaVeicoliNumerati();
+		comandoListaVeicoli();
 		System.out.println();
 		System.out.println("Inserisci il numero del veicolo che vuoi eliminare:");
 		System.out.println();
@@ -116,7 +120,7 @@ public class Esercitazione2 <T> {
 			numeroVeicolo=scan.nextInt();
 			scan.nextLine();
 			System.out.println("HAI SCELTO IL VEICOLO:");
-			c.stampaDettaglio(numeroVeicolo);
+			this.dao.get(numeroVeicolo);
 		
 		} catch(InputMismatchException e ) {
 			
@@ -125,14 +129,14 @@ public class Esercitazione2 <T> {
 			System.out.println("RIPROVA:");
 			System.out.println();
 			scan.nextLine();
-			Esercitazione2.comandoCancellaVeicolo(c, scan);
+			comandoCancellaVeicolo(scan);
 		
 		}catch(IndexOutOfBoundsException e) {
 			System.out.println();
 			System.out.println(("IL NUMERO DI VEICOLO NON è GIUSTO!!").toUpperCase());
 			System.out.println("RIPROVA:");
 			System.out.println();
-			Esercitazione2.comandoCancellaVeicolo(c, scan);
+			comandoCancellaVeicolo(scan);
 		}
 		
 		System.out.println( );
@@ -140,14 +144,14 @@ public class Esercitazione2 <T> {
 		if(Esercitazione2.ripetereComando(scan,"Sicuro di voler eliminare il veicolo "+ numeroVeicolo +"? Scrivi 1 per \"SI\" E 2 per \" no\" " )) {
 				
 			System.out.println("Ho eliminato correttamente il veicolo!!");
-			c.eliminaVeicolo(numeroVeicolo);				
+			this.dao.delete(numeroVeicolo);				
 		}
 		scan.nextLine();
 	}
 	
-	private static void comandoModificaVeicolo(Concessionario c, Scanner scan) {
+	private void comandoModificaVeicolo(Scanner scan) {
 		
-		c.stampaVeicoliNumerati();
+		comandoListaVeicoli();
 		System.out.println();
 		System.out.print("Inserisci il numero del veicolo che vuoi modificare: ");
 		int numeroVeicolo=0;
@@ -155,7 +159,7 @@ public class Esercitazione2 <T> {
 			
 			numeroVeicolo=scan.nextInt();	
 			scan.nextLine();
-			c.stampaDettaglio(numeroVeicolo);
+			((Veicolo)this.dao.get(numeroVeicolo)).stampaDettagliVeicolo();
 			
 		} catch(InputMismatchException e ) {
 		
@@ -164,14 +168,14 @@ public class Esercitazione2 <T> {
 			System.out.println("RIPROVA:");
 			System.out.println();
 			scan.nextLine();
-			Esercitazione2.comandoModificaVeicolo(c, scan);
+			comandoModificaVeicolo(scan);
 		
 		}catch(IndexOutOfBoundsException e) {
 			System.out.println();
 			System.out.println(("IL NUMERO DI VEICOLO NON è GIUSTO!!").toUpperCase());
 			System.out.println("RIPROVA:");
 			System.out.println();
-			Esercitazione2.comandoModificaVeicolo(c, scan);
+			comandoModificaVeicolo(scan);
 		}
 		
 			System.out.print("Inserire il nome della caratteristica da modificare:");
@@ -191,19 +195,19 @@ public class Esercitazione2 <T> {
 				valore+=scan.nextLine();
 			}
 			
-			c.modificaVeicolo(numeroVeicolo,caratteristica, valore, valoreIntero);
+			this.dao.update(numeroVeicolo,caratteristica, valore, valoreIntero);
 			
 			
 			if(Esercitazione2.ripetereComando(scan,"Vuoi ripetere l'operazione? 1: Ripetere 0: Uscire")) {
-				Esercitazione2.comandoModificaVeicolo(c, scan);
+				comandoModificaVeicolo(scan);
 			}
 	
 		
-		c.stampaDettaglio(numeroVeicolo);
+		this.dao.get(valoreIntero);
 		
 	}
 	
-	private static void comandoAggiungiVeicolo(Concessionario c, Scanner scan) {
+	private void comandoAggiungiVeicolo(Scanner scan) {
 		boolean scelta=false;
 		int cilindrata=0;
 		double costo=0;
@@ -229,12 +233,12 @@ public class Esercitazione2 <T> {
 		} catch (InputMismatchException e) {
 			System.out.println("Hai sbagliato ad inserire il valore");
 			scan.nextLine();
-			Esercitazione2.comandoAggiungiVeicolo(c,scan);
+			comandoAggiungiVeicolo(scan);
 		}	
 			
 			try {
 				
-				 if(scelta) {
+				 if(!scelta) {
 					 System.out.println("Inserisci il cliente");
 					 System.out.println("Inserisci il nome dil cliente");
 					 String nome = scan.next();
@@ -247,23 +251,23 @@ public class Esercitazione2 <T> {
 					 scan.nextLine();
 					 Persona p = new Persona(nome, cognome, eta);
 					 Automobile a = new Automobile(marca, modello, targa, cilindrata, costo, p);
-					 c.aggiungiVeicolo(a);
+					 this.dao.save((T)a);
 				 
-			 	 }else if(!scelta) {
+			 	 }else if(scelta) {
 			 		 System.out.println("Inserisci la Capacita di Traino");
 			 		 int capacitaTraino = scan.nextInt();
 			 		 MacchinaAgricola m = new MacchinaAgricola(marca, modello, targa, cilindrata, costo, capacitaTraino);
-					 c.aggiungiVeicolo(m);
+					 this.dao.save((T)m);
 			 }
 				 
 			} catch (EccezioneVeicoloEsistente e) {
 				System.out.println(e.getMessage());
 				System.out.println("Aggiungi di nuovo il veicolo");
-				Esercitazione2.comandoAggiungiVeicolo(c, scan);
+				comandoAggiungiVeicolo(scan);
 			} 
 			if(Esercitazione2.ripetereComando(scan,"Vuoi ripetere l'operazione? 1: Ripetere 0: Uscire")){
 				
-				Esercitazione2.comandoAggiungiVeicolo(c, scan);
+				comandoAggiungiVeicolo(scan);
 			}
 	}
 	private static void Tasto_Continua(Scanner scan) {
