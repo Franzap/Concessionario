@@ -6,7 +6,7 @@ import Concessionario.DAO.interfacceDao.DaoCrudInterfaces;
 import Concessionario.entita.Concessionario;
 
 public class ConcessionarioDao implements DaoCrudInterfaces<Concessionario>{
-
+	
 	@Override
 	public Concessionario get(long l) {
 		// TODO Auto-generated method stub
@@ -26,7 +26,7 @@ public class ConcessionarioDao implements DaoCrudInterfaces<Concessionario>{
 	}
 
 	@Override
-	public void update(Concessionario t) {
+	public void update(long id, Concessionario t) {
 		// TODO Auto-generated method stub
 		
 	}
