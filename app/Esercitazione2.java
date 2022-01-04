@@ -2,6 +2,7 @@ package Concessionario.app;
 
 import java.util.ArrayList;
 
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -187,27 +188,58 @@ public class Esercitazione2 <T> {
 			scan.nextLine();
 			System.out.print("Inserire il nuovo valore: ");
 			
-			int valoreIntero=0;
-			
-			String valore="";
-			
-			if(caratteristica.equals("cilindrata")||caratteristica.equals("costo")||caratteristica.equals("tonnellate")||caratteristica.equals("proprietario")) {
-					valoreIntero=scan.nextInt();
-					scan.nextLine();
-			}else {
-				valore=scan.next();
+			switch (caratteristica.toLowerCase()){
+			case "marca": {
+				String valore=scan.next();
 				valore+=scan.nextLine();
+				((Veicolo)this.daoVeicolo.get(numeroVeicolo)).setMarca(valore);
+				break;
+			}
+			case "modello": {
+				String valore=scan.next();
+				valore+=scan.nextLine();
+				((Veicolo)this.daoVeicolo.get(numeroVeicolo)).setModello(valore);
+				break;
+			}
+			case "targa": {
+				String valore=scan.next();
+				valore+=scan.nextLine();
+				((Veicolo)this.daoVeicolo.get(numeroVeicolo)).setTarga(valore);
+				break;
+			}
+			case "costo": {
+				int valore=scan.nextInt();
+				scan.nextLine();
+				((Veicolo)this.daoVeicolo.get(numeroVeicolo)).setCosto(valore);
+				break;
+			}
+			case "cilindrata": {
+				int valore=scan.nextInt();
+				scan.nextLine();
+				((Veicolo)this.daoVeicolo.get(numeroVeicolo)).setCilindrata(valore);
+				break;
+			}
+			case "tonnellate": {
+				int valore=scan.nextInt();
+				scan.nextLine();
+				((MacchinaAgricola)this.daoVeicolo.get(numeroVeicolo)).setTonnellate(valore);
+				break;
+			}
+			case "proprietario":{
+					
+				break;
+			}
+			default:
+				System.out.println("hai sbagliato a inserire la caratteristica");
+				break;
 			}
 			
-			this.daoVeicolo.update(numeroVeicolo,caratteristica, valore, valoreIntero);
+			this.daoVeicolo.update(this.daoVeicolo.get(numeroVeicolo));
 			
 			
 			if(Esercitazione2.ripetereComando(scan,"Vuoi ripetere l'operazione? 1: Ripetere 0: Uscire")) {
 				comandoModificaVeicolo(scan);
 			}
-	
-		
-		this.daoVeicolo.get(valoreIntero);
 		
 	}
 	

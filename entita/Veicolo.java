@@ -3,7 +3,7 @@ package Concessionario.entita;
 import Concessionario.interfacce.VeicoloI;
 
 public abstract class Veicolo implements VeicoloI {
-	private static long ID=0;
+	private long ID;
 	private String marca;
 	private String modello;
 	private String targa;
@@ -11,14 +11,17 @@ public abstract class Veicolo implements VeicoloI {
 	private double costo;
 	
 	public Veicolo(String marca, String modello, String targa, int cilindrata, double costo) {
-		ID=getID() + 1;
 		this.marca=marca;
 		this.modello=modello;
 		this.targa=targa;
 		this.cilindrata=cilindrata;
 		this.costo=costo;
 	}
-
+	
+	public void setID(long ID) {
+		this.ID = ID;
+	}
+	
 	/**
 	 * @return the marca
 	 */
@@ -114,8 +117,8 @@ public abstract class Veicolo implements VeicoloI {
 				+ ", costo=" + costo + "]";
 	}
 
-	public static long getID() {
-		return ID;
+	public long getID() {
+		return this.ID;
 	}
 
 }

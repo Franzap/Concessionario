@@ -51,7 +51,7 @@ public class PersonaDao implements DaoCrudInterfaces<Persona>{
 	}
 
 	@Override
-	public void update(long id, String caratteristica, String stringa, double valore) {
+	public void update(Persona p) {
 		
 		
 		

@@ -2,12 +2,14 @@ package Concessionario.DAO.implementazioniDao;
 
 import java.util.ArrayList;
 
+
 import java.util.Hashtable;
 
 import Concessionario.DAO.interfacceDao.DaoCrudInterfaces;
 import Concessionario.eccezioni.EccezioneEsistente;
 import Concessionario.entita.MacchinaAgricola;
 import Concessionario.entita.Veicolo;
+
 
 public class VeicoloDao implements DaoCrudInterfaces<Veicolo>{
 	private static Hashtable <Long,Veicolo> table= new Hashtable<Long,Veicolo>();
@@ -45,45 +47,21 @@ public class VeicoloDao implements DaoCrudInterfaces<Veicolo>{
 				throw new EccezioneEsistente(v);
 			}
 		}
+		v.setID(idx);
 		VeicoloDao.table.put(++idx,v);
 		System.out.println("Aggiunta avvenuta!");
 	}
 	@Override
-	public void update(long id, String caratteristica, String stringa, double valore) {
-		switch (caratteristica.toLowerCase()){
-		case "marca": {
-			table.get(id).setMarca(stringa);
-			break;
+	public void update(Veicolo v) {
+		if (v==null) { 
+			System.out.println("Stai cercando di aggiungere il nulla");
+			return;
+		} 
+		if (VeicoloDao.table.contains(v)){
+			System.out.println("Stai cercando di aggiungere un veicolo già presente");
+			return;
 		}
-		case "modello": {
-			table.get(id).setModello(stringa);
-			break;
-		}
-		case "targa": {
-			table.get(id).setTarga(stringa);
-			break;
-		}
-		case "costo": {
-			table.get(id).setCosto(valore);
-			break;
-		}
-		case "cilindrata": {
-			table.get(id).setCilindrata((int)valore);
-			break;
-		}
-		case "tonnellate": {
-			((MacchinaAgricola)table.get(id)).setTonnellate((int)valore);
-			break;
-		}
-		case "proprietario":{
-				
-			break;
-		}
-		default:
-			System.out.println("hai sbagliato a inserire la caratteristica");
-			break;
-		}
-		
+		VeicoloDao.table.put(v.getID(),v);
 		System.out.println("Modifica avvenuta!");
 	}
 	@Override
