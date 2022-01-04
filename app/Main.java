@@ -41,7 +41,17 @@ public class Main {
 		DaoCrudInterfaces<Veicolo> daoVeicolo= new VeicoloDao(); 
 		DaoCrudInterfaces<Persona> daoPersona= new PersonaDao();
 		Esercitazione2 es= new Esercitazione2(daoVeicolo, daoPersona);
+		
+		try {
+			Esercitazione2Factory ef = new Esercitazione2Factory();
+			ef.menu();
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		
 		es.menu();
+		
 	}
 
 }
