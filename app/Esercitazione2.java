@@ -1,26 +1,30 @@
 package Concessionario.app;
 
 import java.util.ArrayList;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import Concessionario.eccezioni.EccezioneVeicoloEsistente;
+
 import Concessionario.entita.Automobile;
 import Concessionario.entita.Concessionario;
 import Concessionario.entita.MacchinaAgricola;
 import Concessionario.entita.Persona;
 import Concessionario.entita.Veicolo;
 import Concessionario.DAO.interfacceDao.*;
+import Concessionario.eccezioni.EccezioneEsistente;
 
 @SuppressWarnings("unused")
 public class Esercitazione2 <T> {
 	private Scanner scan;
-	private DaoCrudInterfaces<T> dao;
+	private DaoCrudInterfaces<T> daoVeicolo;
+	private DaoCrudInterfaces<T> daoPersona;
 	
 	
-	public Esercitazione2(DaoCrudInterfaces<T> dao) {
+	public Esercitazione2(DaoCrudInterfaces<T> daoVeicolo, DaoCrudInterfaces<T> daoPersona) {
 		this.scan = new Scanner(System.in);
-		this.dao = dao;
+		this.daoVeicolo = daoVeicolo;
+		this.daoPersona = daoPersona;
 	}
 
 	public void menu(){
@@ -43,7 +47,7 @@ public class Esercitazione2 <T> {
 					break;
 			
 				case 2:
-					this.dao.findAll();
+					this.daoVeicolo.findAll();
 					comandoDettagliVeicolo(scan);
 					break;
 			
@@ -90,7 +94,7 @@ public class Esercitazione2 <T> {
 		System.out.println();
 		//System.out.println(this.dao.findAll());
 		int count=0;
-		this.dao.findAll();
+		this.daoVeicolo.findAll();
 	}
 	
 	private void comandoDettagliVeicolo(Scanner scan) {
@@ -100,7 +104,7 @@ public class Esercitazione2 <T> {
 				System.out.print("\n\nInserisci l' indice del veicolo da cercare   ");
 				Indice_Veicolo=scan.nextInt();
 				scan.nextLine();
-				((Veicolo)this.dao.get(Indice_Veicolo)).stampaDettagliVeicolo();
+				((Veicolo)this.daoVeicolo.get(Indice_Veicolo)).stampaDettagliVeicolo();
 				
 			}catch(InputMismatchException |IndexOutOfBoundsException e) {
 				System.out.println("\n Veicolo non trovato! \n\n");
@@ -120,7 +124,7 @@ public class Esercitazione2 <T> {
 			numeroVeicolo=scan.nextInt();
 			scan.nextLine();
 			System.out.println("HAI SCELTO IL VEICOLO:");
-			this.dao.get(numeroVeicolo);
+			this.daoVeicolo.get(numeroVeicolo);
 		
 		} catch(InputMismatchException e ) {
 			
@@ -144,7 +148,7 @@ public class Esercitazione2 <T> {
 		if(Esercitazione2.ripetereComando(scan,"Sicuro di voler eliminare il veicolo "+ numeroVeicolo +"? Scrivi 1 per \"SI\" E 2 per \" no\" " )) {
 				
 			System.out.println("Ho eliminato correttamente il veicolo!!");
-			this.dao.delete(numeroVeicolo);				
+			this.daoVeicolo.delete(numeroVeicolo);				
 		}
 		scan.nextLine();
 	}
@@ -159,7 +163,7 @@ public class Esercitazione2 <T> {
 			
 			numeroVeicolo=scan.nextInt();	
 			scan.nextLine();
-			((Veicolo)this.dao.get(numeroVeicolo)).stampaDettagliVeicolo();
+			((Veicolo)this.daoVeicolo.get(numeroVeicolo)).stampaDettagliVeicolo();
 			
 		} catch(InputMismatchException e ) {
 		
@@ -195,7 +199,7 @@ public class Esercitazione2 <T> {
 				valore+=scan.nextLine();
 			}
 			
-			this.dao.update(numeroVeicolo,caratteristica, valore, valoreIntero);
+			this.daoVeicolo.update(numeroVeicolo,caratteristica, valore, valoreIntero);
 			
 			
 			if(Esercitazione2.ripetereComando(scan,"Vuoi ripetere l'operazione? 1: Ripetere 0: Uscire")) {
@@ -203,7 +207,7 @@ public class Esercitazione2 <T> {
 			}
 	
 		
-		this.dao.get(valoreIntero);
+		this.daoVeicolo.get(valoreIntero);
 		
 	}
 	
@@ -250,17 +254,18 @@ public class Esercitazione2 <T> {
 					 int eta = scan.nextInt();
 					 scan.nextLine();
 					 Persona p = new Persona(nome, cognome, eta);
+					 this.daoPersona.save((T)p);
 					 Automobile a = new Automobile(marca, modello, targa, cilindrata, costo, p);
-					 this.dao.save((T)a);
+					 this.daoVeicolo.save((T)a);
 				 
 			 	 }else if(scelta) {
 			 		 System.out.println("Inserisci la Capacita di Traino");
 			 		 int capacitaTraino = scan.nextInt();
 			 		 MacchinaAgricola m = new MacchinaAgricola(marca, modello, targa, cilindrata, costo, capacitaTraino);
-					 this.dao.save((T)m);
+					 this.daoVeicolo.save((T)m);
 			 }
 				 
-			} catch (EccezioneVeicoloEsistente e) {
+			} catch (EccezioneEsistente e) {
 				System.out.println(e.getMessage());
 				System.out.println("Aggiungi di nuovo il veicolo");
 				comandoAggiungiVeicolo(scan);

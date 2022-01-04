@@ -1,7 +1,8 @@
 package Concessionario.entita;
 
 import java.util.ArrayList;
-import Concessionario.eccezioni.EccezioneVeicoloEsistente;
+
+import Concessionario.eccezioni.EccezioneEsistente;
 import Concessionario.interfacce.ConcessionarioI;
 
 public class Concessionario implements ConcessionarioI {
@@ -173,10 +174,10 @@ public class Concessionario implements ConcessionarioI {
 		
 	}
 	@Override
-	public void aggiungiVeicolo(Veicolo v) throws EccezioneVeicoloEsistente {
+	public void aggiungiVeicolo(Veicolo v) throws EccezioneEsistente {
 		for(Veicolo v1 : this.veicoli) {
 			if(v1.equals(v)) {
-				throw new EccezioneVeicoloEsistente(v);
+				throw new EccezioneEsistente(v);
 			}
 		}
 		this.veicoli.add(v);

@@ -1,8 +1,9 @@
 package Concessionario.DAO.implementazioniDao;
 
 import Concessionario.entita.Persona;
+
 import Concessionario.DAO.interfacceDao.DaoCrudInterfaces;
-import Concessionario.eccezioni.EccezioneVeicoloEsistente;
+import Concessionario.eccezioni.EccezioneEsistente;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -31,7 +32,7 @@ public class PersonaDao implements DaoCrudInterfaces<Persona>{
 	}
 
 	@Override
-	public void save(Persona p) throws EccezioneVeicoloEsistente {
+	public void save(Persona p) throws EccezioneEsistente {
 		if (p==null) { 
 			System.out.println("Stai cercando di aggiungere il nulla");
 			return;
@@ -39,6 +40,11 @@ public class PersonaDao implements DaoCrudInterfaces<Persona>{
 		if (PersonaDao.table.contains(p)){
 			System.out.println("Stai cercando di aggiungere una persona già presente");
 			return;
+		}
+		for(long id : table.keySet()) {
+			if(table.get(id).equals(p)) {
+				throw new EccezioneEsistente(p);
+			}
 		}
 		PersonaDao.table.put(++idx,p);
 		System.out.println("Aggiunta avvenuta!");

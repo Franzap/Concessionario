@@ -1,10 +1,11 @@
 package Concessionario.DAO.implementazioniDao;
 
 import java.util.ArrayList;
+
 import java.util.Hashtable;
 
 import Concessionario.DAO.interfacceDao.DaoCrudInterfaces;
-import Concessionario.eccezioni.EccezioneVeicoloEsistente;
+import Concessionario.eccezioni.EccezioneEsistente;
 import Concessionario.entita.MacchinaAgricola;
 import Concessionario.entita.Veicolo;
 
@@ -30,7 +31,7 @@ public class VeicoloDao implements DaoCrudInterfaces<Veicolo>{
 		}
 	}
 	@Override
-	public void save(Veicolo v) throws EccezioneVeicoloEsistente {
+	public void save(Veicolo v) throws EccezioneEsistente {
 		if (v==null) { 
 			System.out.println("Stai cercando di aggiungere il nulla");
 			return;
@@ -41,7 +42,7 @@ public class VeicoloDao implements DaoCrudInterfaces<Veicolo>{
 		}
 		for(long id : table.keySet()) {
 			if(table.get(id).equals(v)) {
-				throw new EccezioneVeicoloEsistente(v);
+				throw new EccezioneEsistente(v);
 			}
 		}
 		VeicoloDao.table.put(++idx,v);

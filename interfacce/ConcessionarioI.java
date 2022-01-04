@@ -2,7 +2,7 @@ package Concessionario.interfacce;
 
 import java.util.ArrayList;
 
-import Concessionario.eccezioni.EccezioneVeicoloEsistente;
+import Concessionario.eccezioni.EccezioneEsistente;
 import Concessionario.entita.MacchinaAgricola;
 import Concessionario.entita.Persona;
 import Concessionario.entita.Veicolo;
@@ -23,7 +23,7 @@ public interface ConcessionarioI {
 	public void stampaVeicoliNumerati();
 	public void modificaVeicolo(int numeroVeicolo, Veicolo v); 	
 	public void modificaVeicolo(int numeroVeicolo, String caratteristica, String stringa, double valore);
-	public void aggiungiVeicolo(Veicolo v) throws EccezioneVeicoloEsistente;
+	public void aggiungiVeicolo(Veicolo v) throws EccezioneEsistente;
 	public void eliminaVeicolo(int numeroVeicolo1);
 	public String classeVeicolo(int numeroVeicolo);
 }
