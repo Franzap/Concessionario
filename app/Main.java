@@ -1,16 +1,5 @@
 package  Concessionario.app;
 
-import java.util.ArrayList;
-
-import Concessionario.DAO.implementazioniDao.VeicoloDao;
-import Concessionario.DAO.interfacceDao.DaoCrudInterfaces;
-import Concessionario.entita.Automobile;
-import Concessionario.entita.Concessionario;
-import Concessionario.entita.MacchinaAgricola;
-import Concessionario.entita.Persona;
-import Concessionario.entita.Veicolo;
-
-
 
 public class Main {
 	
@@ -37,8 +26,6 @@ public class Main {
 		
 		Esercitazione2.menu(c);
 	*/	
-		DaoCrudInterfaces<Veicolo> dao= new VeicoloDao(); 
-		Esercitazione2 es= new Esercitazione2(dao);
 	}
 
 }
