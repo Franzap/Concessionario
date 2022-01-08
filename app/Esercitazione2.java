@@ -14,6 +14,7 @@ import Concessionario.entita.MacchinaAgricola;
 import Concessionario.entita.Persona;
 import Concessionario.entita.Veicolo;
 import Concessionario.DAO.interfacceDao.*;
+import Concessionario.DAO.utils.BeanFactory;
 import Concessionario.eccezioni.EccezioneEsistente;
 
 @SuppressWarnings("unused")
@@ -21,13 +22,14 @@ public class Esercitazione2 <T> {
 	private Scanner scan;
 	private DaoCrudInterfaces<T> daoVeicolo;
 	private DaoCrudInterfaces<T> daoPersona;
+	private BeanFactory factory;
 	
 	
-	public Esercitazione2(DaoCrudInterfaces<T> daoVeicolo, DaoCrudInterfaces<T> daoPersona) {
+	public Esercitazione2() throws Exception {
 		this.scan = new Scanner(System.in);
-		this.daoVeicolo = daoVeicolo;
-		this.daoPersona = daoPersona;
-		 
+		this.factory = new BeanFactory();
+		this.daoVeicolo = (DaoCrudInterfaces<T>) this.factory.getBean("VeicoloDao");
+		this.daoPersona = (DaoCrudInterfaces<T>) this.factory.getBean("PersonaDao");
 	}
 
 	public void menu(){

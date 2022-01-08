@@ -16,7 +16,7 @@ import Concessionario.entita.Veicolo;
 public class Main {
 	
 	
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws Exception  {
 		/*Persona p1 = new Persona("Mario", "Rossi", 35);
 		Automobile a1 = new Automobile("Audi", "A3", "sdhjhgsd", 2000,25000, p1);
 		Persona p2 = new Persona("Maria", "Bianchi", 45);
@@ -38,20 +38,9 @@ public class Main {
 		
 		Esercitazione2.menu(c);
 	*/	
-		DaoCrudInterfaces<Veicolo> daoVeicolo= new VeicoloDao(); 
-		DaoCrudInterfaces<Persona> daoPersona= new PersonaDao();
-		Esercitazione2 es= new Esercitazione2(daoVeicolo, daoPersona);
 		
-		try {
-			Esercitazione2Factory ef = new Esercitazione2Factory();
-			ef.menu();
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
-		
+		Esercitazione2 es= new Esercitazione2();
 		es.menu();
-		
 	}
 
 }
